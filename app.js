@@ -21,6 +21,14 @@ app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
 
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+app.configure('production', function(){
+  app.use(express.errorHandler());
+});
+
 //routes
 app.get('/', index.view);
 //set environment ports and start application
@@ -42,11 +50,60 @@ T.get('search/tweets', { q: '#tech', count: 20 }, function(err, reply) {
     } else {
         for (var i = 0; i < reply.statuses.length; i++) {
             var status = reply.statuses[i];
-            console.log('*************************');
-            console.log('  username: ' + status.user.name);
-            console.log('   ' + status.text);
-            console.log('  time/date: ' + status.created_at);
-            console.log('*************************');
+            // console.log('*************************');
+            // console.log('  username: ' + status.user.name);
+            // console.log('   ' + status.text);
+            // console.log('  time/date: ' + status.created_at);
+            // console.log('*************************');
         }
     }
 })
+
+var conf = {
+    client_id:      '519903591442854'
+  , client_secret:  '52b53b73220f6fe48a3b30166f7ceaef'
+  , scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
+  , redirect_uri:   'http://cogs121-plzrespond.herokuapp.com/auth/facebook'
+};
+
+app.get('/auth/facebook', function(req, res) {
+
+  // we don't have a code yet
+  // so we'll redirect to the oauth dialog
+  if (!req.query.code) {
+    var authUrl = graph.getOauthUrl({
+        "client_id":     conf.client_id
+      , "redirect_uri":  conf.redirect_uri
+      , "scope":         conf.scope
+    });
+
+    if (!req.query.error) { //checks whether a user denied the app facebook login/permissions
+      res.redirect(authUrl);
+    } else {  //req.query.error == 'access_denied'
+      res.send('access denied');
+    }
+    return;
+  }
+
+  // code is set
+  // we'll send that and get the access token
+  graph.authorize({
+      "client_id":      conf.client_id
+    , "redirect_uri":   conf.redirect_uri
+    , "client_secret":  conf.client_secret
+    , "code":           req.query.code
+  }, function (err, facebookRes) {
+    res.redirect('/UserHasLoggedIn');
+  });
+
+
+});
+
+var searchOptions = {
+    q:     "AKPsi"
+  , type:  "post"
+};
+
+graph.search(searchOptions, function(err, res) {
+    console.log(res); // {data: [{id: xxx, from: ...}, {id: xxx, from: ...}]}
+});
