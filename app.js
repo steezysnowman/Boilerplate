@@ -31,6 +31,7 @@ app.configure('production', function(){
 
 //routes
 app.get('/', index.view);
+app.get('/display', index.display);
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
 http.createServer(app).listen(app.get('port'), function(){
@@ -93,7 +94,7 @@ app.get('/auth/facebook', function(req, res) {
     , "client_secret":  conf.client_secret
     , "code":           req.query.code
   }, function (err, facebookRes) {
-    res.redirect('index.display');
+    res.redirect('/display');
   });
 
 
