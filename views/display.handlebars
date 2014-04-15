@@ -1,10 +1,40 @@
 <html>
   <head>
-  	<title>DisplayData</title>	
-
+  	<title>This is Your Data</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/introHCI.css" rel="stylesheet">
   </head>
- 
   <body>
-  	Display!
+  	<div class="container">
+		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+		<!-- p means paragraph -->
+		<div class="jumbotron">
+			<h1>Foxy Social App</h1>
+			<p>Welcome Back!</p>
+			<button id="colorBtn" class="btn btn-primary btn-lg">Click Here for Smooth Lovin'</button>
+		</div>
+		<table id="data-table" border="1" cellpadding="10" cellspacing="0">
+			<th>&nbsp;</th>
+		  	<th>User ID</th>
+		  	<th>Message</th>
+		  </tr>
+		  <script>
+            var i = 1;
+          </script>
+		  {{#each data}}
+		    <tr>
+		   	  <script>
+                document.write("<td>" + i.toString() + "</td>");
+                i = i + 1;
+              </script>
+			  <td>{{id}}</td>
+			  <td>{{message}}</td>
+		    </tr>
+		  {{/each}}
+		</tr>
+	</div>
   </body>
  </html>
