@@ -6,5 +6,13 @@ exports.view = function(req, res) {
 }
 
 exports.display = function(req, res) {
-	res.render('display', data);
+	res.render('display');
+}
+
+exports.fbData = function(req, res) {
+	res.render('fbData');
+}
+
+exports.twitterData = function(req, res) {
+	res.render('twitterData');
 }

@@ -16,25 +16,42 @@
 			<p>Welcome Back!</p>
 			<button id="colorBtn" class="btn btn-primary btn-lg">Click Here for Smooth Lovin'</button>
 		</div>
-		<table id="data-table" border="1" cellpadding="10" cellspacing="0">
-			<th>&nbsp;</th>
-		  	<th>User ID</th>
-		  	<th>Message</th>
-		  </tr>
+		
+		<form method="post" action="/getFbData"> 
+		<input type="text" placeholder="topic" name="query"> </input>
+		<button type="submit" class="btn btn-primary"> Get FB posts</button> 
+		</form>
+
+
+		<form method="post" action="/getTwitterData">
+			<input type="text" placeholder="topic" name="query"> </input>
+			<button type="submit" class="btn btn-primary"> Get Twitter Posts</button>
+		</form>
+
+
+
+<!-- 		<table id="data-table" border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<th>&nbsp;</th>
+			  	<th>User ID</th>
+			  	<th>Message</th>
+			</tr>
+
 		  <script>
             var i = 1;
           </script>
-		  {{#each data}}
-		    <tr>
-		   	  <script>
-                document.write("<td>" + i.toString() + "</td>");
-                i = i + 1;
-              </script>
-			  <td>{{id}}</td>
-			  <td>{{message}}</td>
-		    </tr>
-		  {{/each}}
-		</tr>
+			  {{#each fbObj.data}}
+			    <tr>
+			   	  <script>
+	                document.write("<td>" + i.toString() + "</td>");
+	                i = i + 1;
+	              </script>
+				  <td>{{id}}</td>
+				  <td>{{message}}</td>
+			    </tr>
+			  {{/each}}
+			</tr>
+		</table> -->
 	</div>
   </body>
  </html>

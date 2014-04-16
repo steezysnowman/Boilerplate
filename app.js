@@ -29,42 +29,55 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-//routes
-app.get('/', index.view);
-app.get('/display', index.display);
-//set environment ports and start application
 app.set('port', process.env.PORT || 3000);
+
 http.createServer(app).listen(app.get('port'), function(){
-	console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
 
 var T = new Twit({
-	consumer_key: '92YlXn49CPpbZ0iLROm5F1yPf',
-	consumer_secret: 'exexjdtuuNbbLW7XZ7Ms0MIBuEDfBoXQHE7EzGNnCsLwB8YU33',
-	access_token: '357766764-M2TZahHaw0jww8MGNiTO5N06TDHb17CBdblDWdsa',
-	access_token_secret: '0tuo8SeCA95HKcdoKetlKRNmyb2rrHttbhLQPYrz5fsCC'
+  consumer_key: '92YlXn49CPpbZ0iLROm5F1yPf',
+  consumer_secret: 'exexjdtuuNbbLW7XZ7Ms0MIBuEDfBoXQHE7EzGNnCsLwB8YU33',
+  access_token: '357766764-M2TZahHaw0jww8MGNiTO5N06TDHb17CBdblDWdsa',
+  access_token_secret: '0tuo8SeCA95HKcdoKetlKRNmyb2rrHttbhLQPYrz5fsCC'
 });
 
-T.get('search/tweets', { q: '#tech', count: 20 }, function(err, reply) {
-    if (err) {
-        console.dir(err);
+//routes
+app.get('/', index.view);
+app.get('/display', index.display);
+
+app.post('/getFbData', function(req, res) {
+  console.log(req.body.query);
+
+  var searchOptions = {
+          q:     req.body.query,
+          type:  "post",
+          limit: 20
+  }; 
+
+  graph.search(searchOptions, function(err, fbRes) {
+    console.log(fbRes);
+    res.render('fbData', fbRes);
+  });
+});
+
+app.post('/getTwitterData', function(req, res) {
+
+  T.get('search/tweets', {q: req.body.query, count: 20}, function(err, twitRes) {
+    if(err) {
+      console.dir(err);
     } else {
-        for (var i = 0; i < reply.statuses.length; i++) {
-            var status = reply.statuses[i];
-            // console.log('*************************');
-            // console.log('  username: ' + status.user.name);
-            // console.log('   ' + status.text);
-            // console.log('  time/date: ' + status.created_at);
-            // console.log('*************************');
-        }
+      console.log(twitRes);
+      res.render('tweets', twitRes);
     }
-})
+  });
+});
 
 var conf = {
     client_id:      '519903591442854'
   , client_secret:  '52b53b73220f6fe48a3b30166f7ceaef'
   , scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-  , redirect_uri:   'http://cogs121-plzrespond.herokuapp.com/auth/facebook'
+  , redirect_uri:   'http://localhost:3000/auth/facebook'
 };
 
 app.get('/auth/facebook', function(req, res) {
@@ -85,7 +98,6 @@ app.get('/auth/facebook', function(req, res) {
     }
     return;
   }
-
   // code is set
   // we'll send that and get the access token
   graph.authorize({
@@ -96,15 +108,4 @@ app.get('/auth/facebook', function(req, res) {
   }, function (err, facebookRes) {
     res.redirect('/display');
   });
-
-
-});
-
-var searchOptions = {
-    q:     "AKPsi"
-  , type:  "post"
-};
-
-graph.search(searchOptions, function(err, res) {
-    console.log(res); // {data: [{id: xxx, from: ...}, {id: xxx, from: ...}]}
 });
