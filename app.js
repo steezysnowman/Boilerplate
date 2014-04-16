@@ -80,7 +80,7 @@ var conf = {
     client_id:      '519903591442854'
   , client_secret:  '52b53b73220f6fe48a3b30166f7ceaef'
   , scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-  , redirect_uri:   '//cogs121-plzrespond.herokuapp.com/auth/facebook'
+  , redirect_uri:   'https://cogs121-plzrespond.herokuapp.com/auth/facebook'
 };
 
 app.get('/auth/facebook', function(req, res) {
