@@ -46,6 +46,8 @@ var T = new Twit({
 app.get('/', index.view);
 app.post('/', index.view);
 app.get('/display', index.display);
+app.post('/display', index.display);
+
 
 app.post('/getFbData', function(req, res) {
   console.log(req.body.query);
