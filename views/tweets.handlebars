@@ -1,35 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
 <html>
   <head>
-  	<title>Tweets</title>	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/introHCI.css" rel="stylesheet">
+    <title>Facebook Posts</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <link href="/css/tweets.css" rel="stylesheet">
+  <script src='http://d3js.org/d3.v2.js'></script>
   </head>
 
 
-  <body>
-  	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
-		<div class="jumbotron">
-			<h1>Foxy Social App</h1>
-			<p>Welcome Back!</p>
-			<button id="colorBtn" href="http://www.youtube.com/watch?v=tdBNI5Jej-M" class="btn btn-primary btn-lg">Click Here for Smooth Lovin'</button>
-		</div>
 
-		<div class="panel panel-default">
-		  
-			{{#each statuses}}
-		  <div class="panel-heading">
-		    <h3 class="panel-title">{{user.name}}</h3>
-		  </div>
-		  <div class="panel-body">
-		    {{text}}
-		  </div>
-		  {{/each}}
-		</div>
-	</div>
-  </body>
- </html>
+<body>
+    <div class="container">
+    <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+    <!-- p means paragraph -->
+    <div class="jumbotron">
+
+
+    <h1>Foxy Social App</h1>
+      <p>Welcome Back!</p>
+      <button id="colorBtn" href="http://www.youtube.com/watch?v=tdBNI5Jej-M" class="btn btn-primary btn-lg">Click Here for Smooth Lovin'</button>
+    </div>
+
+    <div class="graph">
+
+    </div>
+
+    <div class="panel panel-default">
+      {{#each data}}
+      <div class="panel-heading">
+        <h3 class="panel-title">{{from.name}}</h3>
+      </div>
+      <div class="panel-body">
+        {{message}}
+      </div>
+      {{/each}}
+    </div>
+
+
+
+  </div>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="/js/tweets.js"></script>
+
+</body>
+</html>

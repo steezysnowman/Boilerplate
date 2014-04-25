@@ -1,0 +1,98 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose node symlink /usr/bin/node
+5 warn package.json Boilerplate@0.0.1 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/home/josh/workspace/Boilerplate',
+7 verbose install   [ 'express',
+7 verbose install     'express3-handlebars',
+7 verbose install     'mongodb',
+7 verbose install     'mongoose',
+7 verbose install     'passport',
+7 verbose install     'passport-facebook',
+7 verbose install     'passport-twitter',
+7 verbose install     'dotenv',
+7 verbose install     'twit',
+7 verbose install     'fbgraph',
+7 verbose install     'fs' ] ]
+8 info preinstall Boilerplate@0.0.1
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping express@3.x /home/josh/workspace/Boilerplate
+11 verbose already installed skipping express3-handlebars@* /home/josh/workspace/Boilerplate
+12 verbose already installed skipping mongodb@* /home/josh/workspace/Boilerplate
+13 verbose already installed skipping mongoose@* /home/josh/workspace/Boilerplate
+14 verbose already installed skipping passport@* /home/josh/workspace/Boilerplate
+15 verbose already installed skipping passport-facebook@* /home/josh/workspace/Boilerplate
+16 verbose already installed skipping passport-twitter@* /home/josh/workspace/Boilerplate
+17 verbose already installed skipping dotenv@* /home/josh/workspace/Boilerplate
+18 verbose already installed skipping fbgraph@* /home/josh/workspace/Boilerplate
+19 verbose already installed skipping twit@* /home/josh/workspace/Boilerplate
+20 verbose cache add [ 'fs@*', null ]
+21 verbose cache add name=undefined spec="fs@*" args=["fs@*",null]
+22 verbose parsed url { protocol: null,
+22 verbose parsed url   slashes: null,
+22 verbose parsed url   auth: null,
+22 verbose parsed url   host: null,
+22 verbose parsed url   port: null,
+22 verbose parsed url   hostname: null,
+22 verbose parsed url   hash: null,
+22 verbose parsed url   search: null,
+22 verbose parsed url   query: null,
+22 verbose parsed url   pathname: 'fs@*',
+22 verbose parsed url   path: 'fs@*',
+22 verbose parsed url   href: 'fs@*' }
+23 verbose cache add name="fs" spec="*" args=["fs","*"]
+24 verbose parsed url { protocol: null,
+24 verbose parsed url   slashes: null,
+24 verbose parsed url   auth: null,
+24 verbose parsed url   host: null,
+24 verbose parsed url   port: null,
+24 verbose parsed url   hostname: null,
+24 verbose parsed url   hash: null,
+24 verbose parsed url   search: null,
+24 verbose parsed url   query: null,
+24 verbose parsed url   pathname: '*',
+24 verbose parsed url   path: '*',
+24 verbose parsed url   href: '*' }
+25 verbose addNamed [ 'fs', '*' ]
+26 verbose addNamed [ null, '*' ]
+27 silly lockFile d8bf140d-fs fs@*
+28 verbose lock fs@* /home/josh/.npm/d8bf140d-fs.lock
+29 silly addNameRange { name: 'fs', range: '*', hasData: false }
+30 verbose url raw fs
+31 verbose url resolving [ 'http://registry.npmjs.org/', './fs' ]
+32 verbose url resolved http://registry.npmjs.org/fs
+33 info trying registry request attempt 1 at 16:28:22
+34 http GET http://registry.npmjs.org/fs
+35 http 404 http://registry.npmjs.org/fs
+36 silly registry.get cb [ 404,
+36 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+36 silly registry.get     'content-type': 'application/json',
+36 silly registry.get     via: '1.1 varnish',
+36 silly registry.get     'cache-control': 'max-age=0',
+36 silly registry.get     'content-length': '52',
+36 silly registry.get     'accept-ranges': 'bytes',
+36 silly registry.get     date: 'Fri, 25 Apr 2014 23:28:23 GMT',
+36 silly registry.get     age: '0',
+36 silly registry.get     connection: 'keep-alive',
+36 silly registry.get     'x-served-by': 'cache-v37-ASH, cache-lax1433-LAX',
+36 silly registry.get     'x-cache': 'MISS, MISS',
+36 silly registry.get     'x-cache-hits': '0, 0',
+36 silly registry.get     'x-timer': 'S1398468502.915666819,VS0,VS32,VE134,VE167' } ]
+37 silly lockFile d8bf140d-fs fs@*
+38 silly lockFile d8bf140d-fs fs@*
+39 error 404 'fs' is not in the npm registry.
+39 error 404 You should bug the author to publish it
+39 error 404 It was specified as a dependency of 'Boilerplate'
+39 error 404
+39 error 404 Note that you can also install from a
+39 error 404 tarball, folder, or http url, or git url.
+40 error System Linux 3.13.0-19-generic
+41 error command "/usr/bin/node" "/usr/bin/npm" "install"
+42 error cwd /home/josh/workspace/Boilerplate
+43 error node -v v0.10.26
+44 error npm -v 1.4.3
+45 error code E404
+46 verbose exit [ 1, true ]

@@ -6,6 +6,7 @@ var handlebars = require('express3-handlebars');
 var app = express();
 var Twit = require('twit');
 var graph = require('fbgraph');
+var fs = require('fs');
 
 //route files to load
 var index = require('./routes/index');
@@ -66,13 +67,28 @@ app.post('/getFbData', function(req, res) {
   });
 });
 
+
+var twitterJson;
 app.post('/getTwitterData', function(req, res) {
 
   T.get('search/tweets', {q: req.body.query, count: 20}, function(err, twitRes) {
     if(err) {
       console.dir(err);
     } else {
-      console.log(twitRes);
+      //console.log(twitRes);
+      var twitFile = "number\tretweets\ttweet\n";
+
+      var i;
+      for (i = 0; i < twitRes.statuses.length; i++) {
+        twitFile = twitFile + i + "\t" + twitRes.statuses[i].retweet_count + 
+          "\t" + twitRes.statuses[i].text + "\n";
+      }
+
+      fs.writeFile('./public/twitterData.tsv', twitFile, function(err) {
+        if (err) return console.log(err);
+      });
+  
+      twitterJson = twitRes;
       res.render('tweets', twitRes);
     }
   });
@@ -82,8 +98,14 @@ var conf = {
     client_id:      '519903591442854'
   , client_secret:  '52b53b73220f6fe48a3b30166f7ceaef'
   , scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-  , redirect_uri:   'https://cogs121-plzrespond.herokuapp.com/auth/facebook'
+  , redirect_uri:   'http://localhost:3000/auth/facebook'
 };
+
+app.get('/getTwitterJson', function(req, res) {
+  console.log(twitterJson);
+  console.log("nigga");
+  res.json(twitterJson);
+});
 
 app.get('/auth/facebook', function(req, res) {
 
