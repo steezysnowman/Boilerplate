@@ -49,6 +49,7 @@ app.post('/', index.view);
 app.get('/display', index.display);
 app.post('/display', index.display);
 
+app.get('/testMap', index.testMap)
 
 app.post('/getFbData', function(req, res) {
   console.log(req.body.query);

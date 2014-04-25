@@ -16,3 +16,7 @@ exports.fbData = function(req, res) {
 exports.twitterData = function(req, res) {
 	res.render('twitterData');
 }
+
+exports.testMap = function(req, res) {
+	res.render('testMap')
+}
