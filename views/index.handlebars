@@ -13,9 +13,12 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<h1>Twerky Twitter App</h1>
-			<p>Welcome Back!</p>
+			<p>Welcome!</p>
 		</div>
 		<center>
+		{{#if errorMessage}}
+			<p style="color:red;"><strong>Please enter a search value</strong></p>
+		{{/if}}
 		Please enter a topic.
 
 <!-- 		<form method="post" action="/getFbData"> 

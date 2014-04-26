@@ -17,6 +17,6 @@ exports.twitterData = function(req, res) {
 	res.render('twitterData');
 }
 
-exports.testMap = function(req, res) {
-	res.render('testMap')
+exports.errorMessage = function(req, res) {
+	res.render('index', {'errorMessage': true});
 }
