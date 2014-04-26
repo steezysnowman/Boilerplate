@@ -1,8 +1,10 @@
-COGS121 Assignment 2: README
+COGS121 Assignment 2: D3 Social Web Application
 ===========
 
-Brian Lai 	(A09284392)
-Joshua Liu	(A09453478)
+Brian Lai
+Joshua Liu
+
+Website URL: http://cogs121-plzrespond.herokuapp.com/
 
 Design Principles:
 
