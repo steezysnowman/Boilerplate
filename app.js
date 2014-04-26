@@ -79,9 +79,14 @@ app.post('/getTwitterData', function(req, res) {
       var twitFile = "number\tretweets\ttweet\n";
 
       var i;
+      var j = 0;
       for (i = 0; i < twitRes.statuses.length; i++) {
-        twitFile = twitFile + i + "\t" + twitRes.statuses[i].retweet_count + 
-          "\t" + twitRes.statuses[i].text + "\n";
+        
+        if(twitRes.statuses[i].text.toString().indexOf("\n") == -1) {
+          twitFile = twitFile + j + "\t" + twitRes.statuses[i].retweet_count + 
+            "\t" + twitRes.statuses[i].text + "\n";
+            j++;
+        } 
       }
 
       fs.writeFile('./public/twitterData.tsv', twitFile, function(err) {

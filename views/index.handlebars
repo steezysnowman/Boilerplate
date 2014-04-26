@@ -1,25 +1,33 @@
 <html>
   <head>
-    <title>Hello...</title>  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-  <link href="/css/introHCI.css" rel="stylesheet">
+  	<title>This is Your Data</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/introHCI.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-    <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-    <!-- p means paragraph -->
-    <div class="jumbotron">
-      <h1>Foxy Social App</h1>
-      <p>Welcome Back!</p>
-      <button id="colorBtn" href="http://www.youtube.com/watch?v=tdBNI5Jej-M" class="btn btn-primary btn-lg">Click Here for Smooth Lovin'</button>
-    </div>
+  	<div class="container">
+		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+		<!-- p means paragraph -->
+		<div class="jumbotron">
+			<h1>Twerky Twitter App</h1>
+			<p>Welcome Back!</p>
+		</div>
+		<center>
+		Please enter a topic.
 
-    <form action="/auth/facebook">
-      <button class="btn btn-primary btn-lg"> Login </button>
-    </form>
-  </div>
+<!-- 		<form method="post" action="/getFbData"> 
+		<input type="text" placeholder="topic" name="query"> </input><p><p>
+		<button type="submit" class="btn btn-primary"> Get FB posts</button> 
+		</form> -->
+
+		<form method="post" action="/getTwitterData">
+			<input type="text" placeholder="Topic" name="query"> </input><p><p>
+			<button type="submit" class="btn btn-primary"> Get Twitter Posts</button>
+		</form>
+	</center>
+	</div>
   </body>
  </html>
